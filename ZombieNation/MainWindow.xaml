@@ -1,0 +1,225 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:local="clr-namespace:ZombieNation"
+        mc:Ignorable="d" x:Class="ZombieNation.MainWindow" Name="Window"
+        SizeToContent="WidthAndHeight"
+        Title="MainWindow" Loaded="Window_Loaded_1">
+
+    <Window.CommandBindings>
+        <CommandBinding  Command="{x:Static local:MainWindow.GoCommand}" Executed="GoCommand_Executed_1" />
+        <CommandBinding  Command="{x:Static local:MainWindow.HighHatCommand}" Executed="HighHatCommand_Executed_1" />
+        <CommandBinding  Command="{x:Static local:MainWindow.ChangeLogoCyanCommand}" Executed="ChangeLogoCyanCommand_Executed_1" />
+        <CommandBinding  Command="{x:Static local:MainWindow.ChangeLogoOrangeCommand}" Executed="ChangeLogoOrangeCommand_Executed_1" />
+        <CommandBinding  Command="{x:Static local:MainWindow.ChangeLogoYellowCommand}" Executed="ChangeLogoYellowCommand_Executed_1" />
+        <CommandBinding  Command="{x:Static local:MainWindow.ChangeLogoRedCommand}" Executed="ChangeLogoRedCommand_Executed_1" />
+        <CommandBinding  Command="{x:Static local:MainWindow.ChangeLogoGreenCommand}" Executed="ChangeLogoGreenCommand_Executed_1" />
+        <CommandBinding  Command="{x:Static local:MainWindow.ShootArrowsCommand}" Executed="ShootArrowsCommand_Executed_1" />
+        <CommandBinding  Command="{x:Static local:MainWindow.AddInterferenceCommand}" Executed="AddInterferenceCommand_Executed_1" />
+        <CommandBinding  Command="{x:Static local:MainWindow.SaveCommand}" Executed="SaveCommand_Executed_1" />
+    </Window.CommandBindings>
+
+    <Window.Resources>
+
+        <Storyboard x:Key="sbLoadingImage" Name="sbLoadingImage">
+            <DoubleAnimation
+                        Storyboard.TargetName="Window" 
+                        Storyboard.TargetProperty="ImageLoadPercent"
+                        From="0.0" To="1.0" Duration="0:0:27.42857"  />
+        </Storyboard>
+        
+        <Storyboard x:Key="sbExpandImage" Name="sbExpandImage">
+            <DoubleAnimation
+                        Storyboard.TargetName="brdPaper" 
+                        Storyboard.TargetProperty="(Canvas.Left)"
+                        From="100" To="0"  Duration="0:0:13.714"  />
+            <DoubleAnimation
+                        Storyboard.TargetName="brdPaper" 
+                        Storyboard.TargetProperty="(Canvas.Top)"
+                        From="75" To="0"  Duration="0:0:13.714"  />
+            <DoubleAnimation
+                        Storyboard.TargetName="brdPaper" 
+                        Storyboard.TargetProperty="Width"
+                        From="600" To="800"  Duration="0:0:13.714"  />
+            <DoubleAnimation
+                        Storyboard.TargetName="brdPaper" 
+                        Storyboard.TargetProperty="Height"
+                        From="450" To="600"  Duration="0:0:13.714"  />
+            <DoubleAnimation
+                        Storyboard.TargetName="imgCD" 
+                        Storyboard.TargetProperty="Width"
+                        From="520" To="720"  Duration="0:0:13.714"  />
+            <DoubleAnimation
+                        Storyboard.TargetName="imgCD" 
+                        Storyboard.TargetProperty="Height"
+                        From="431" To="590"  Duration="0:0:13.714"  />            
+        </Storyboard>
+
+        <Storyboard x:Key="sbShootArrows" Name="sbShootArrows"
+                    >
+            
+            <!-- Scaling -->
+            
+            <DoubleAnimation Storyboard.TargetName="imgArrowTopLeft" 
+                             Storyboard.TargetProperty="(Image.RenderTransform).(ScaleTransform.ScaleX)" 
+                             From="1"  To="2" 
+                             Duration="0:0:0.42857"/>
+            <DoubleAnimation Storyboard.TargetName="imgArrowTopLeft" 
+                             Storyboard.TargetProperty="(Image.RenderTransform).(ScaleTransform.ScaleY)" 
+                             Duration="0:0:0.42857" From="1" To="2"  />            
+            <DoubleAnimation Storyboard.TargetName="imgArrowBottomLeft"
+                             Storyboard.TargetProperty="(Image.RenderTransform).(ScaleTransform.ScaleX)"
+                             Duration="0:0:0.42857" From="1" To="2"    />
+            <DoubleAnimation Storyboard.TargetName="imgArrowBottomLeft"
+                             Storyboard.TargetProperty="(Image.RenderTransform).(ScaleTransform.ScaleY)"
+                             Duration="0:0:0.42857" From="1" To="2" />            
+            <DoubleAnimation Storyboard.TargetName="imgArrowBottomRight"
+                             Storyboard.TargetProperty="(Image.RenderTransform).(ScaleTransform.ScaleX)"
+                            Duration="0:0:0.42857" From="1"  To="2"   />
+            <DoubleAnimation Storyboard.TargetName="imgArrowBottomRight"
+                             Storyboard.TargetProperty="(Image.RenderTransform).(ScaleTransform.ScaleY)"
+                            Duration="0:0:0.42857" From="1"  To="2"  />            
+            <DoubleAnimation Storyboard.TargetName="imgArrowTopRight"
+                            Storyboard.TargetProperty="(Image.RenderTransform).(ScaleTransform.ScaleX)"
+                           Duration="0:0:0.42857"  From="1" To="2"  />
+            <DoubleAnimation Storyboard.TargetName="imgArrowTopRight"
+                            Storyboard.TargetProperty="(Image.RenderTransform).(ScaleTransform.ScaleY)"
+                            Duration="0:0:0.42857" From="1" To="2"   />
+
+            <!-- Positioning -->
+            <DoubleAnimation Storyboard.TargetName="imgArrowTopLeft" 
+                             Storyboard.TargetProperty="(Canvas.Left)" 
+                            Duration="0:0:0.42857" From="95" By="-300" />
+            <DoubleAnimation Storyboard.TargetName="imgArrowTopLeft" 
+                             Storyboard.TargetProperty="(Canvas.Top)" 
+                            Duration="0:0:0.42857" From="95" By="-300" />
+            <DoubleAnimation Storyboard.TargetName="imgArrowTopRight" 
+                             Storyboard.TargetProperty="(Canvas.Left)" 
+                            Duration="0:0:0.42857" From="588" By="300" />
+            <DoubleAnimation Storyboard.TargetName="imgArrowTopRight" 
+                             Storyboard.TargetProperty="(Canvas.Top)" 
+                            Duration="0:0:0.42857" From="92" By="-300" />
+            <DoubleAnimation Storyboard.TargetName="imgArrowBottomLeft" 
+                             Storyboard.TargetProperty="(Canvas.Left)" 
+                           Duration="0:0:0.42857" From="93" By="-300" />
+            <DoubleAnimation Storyboard.TargetName="imgArrowBottomLeft" 
+                             Storyboard.TargetProperty="(Canvas.Top)" 
+                            Duration="0:0:0.42857" From="402" By="300" />
+            <DoubleAnimation Storyboard.TargetName="imgArrowBottomRight" 
+                             Storyboard.TargetProperty="(Canvas.Left)" 
+                            Duration="0:0:0.42857" From="594" By="300" />
+            <DoubleAnimation Storyboard.TargetName="imgArrowBottomRight" 
+                             Storyboard.TargetProperty="(Canvas.Top)" 
+                          Duration="0:0:0.42857"  From="405" By="300" />
+
+        </Storyboard>
+
+    </Window.Resources>
+
+       
+    
+    <Grid Background="black" x:Name="grdMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="600" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="800" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Controls-->
+        <Canvas Grid.Row="0" Height="30px" Grid.ColumnSpan="2" Margin="0,0,20.868,1" Visibility="Collapsed">
+            <Button x:Name="btnGo" Click="btnGo_Click_1" Width="50px" Content="Go"/>
+        </Canvas>
+
+        <!-- Canvas -->
+        <Border BorderBrush="Gray" BorderThickness="0" Grid.Row="1">
+            <Canvas x:Name="cvsCanvas" ClipToBounds="True">
+
+                <!-- Paper -->
+                <Border Canvas.ZIndex="2" BorderThickness="0" Canvas.Left="100" Width="600" Height="450"
+        			Canvas.Top="75" Name="brdPaper">
+                    <Canvas Background="Black" ClipToBounds="True" Name="cvsPaper">
+                        
+                        <!-- "Loading" effect rectangles -->
+                        <StackPanel Orientation="Vertical" Width="600" Canvas.ZIndex="3" Height="450">
+                            <Rectangle Fill="Transparent" Height="0" Width="600" Name="rtLoadedBlock" />
+                            <Rectangle Fill="#CDCDCD" Width="0" Height="1" HorizontalAlignment="Right" Name="rtToBeLoadedLine" />
+                            <Rectangle Fill="#CDCDCD" Height="450" HorizontalAlignment="Stretch" Name="rtToBeLoadedBlock" />                        
+                        </StackPanel>
+                        
+                        <!-- CD cover -->
+                        <Image Source="Images\zn-intro.png" Name="imgCD" Stretch="Uniform"
+                               Canvas.Left="40" Height="431" Width="520" Canvas.Top="10" d:IsHidden="True" />
+                        
+                        <!-- Zombie Nation Colour Logo -->
+                        <Image Source="Images\zn-logo-green.png" Name="imgLogo" Stretch="Uniform"
+                               Width="720" Canvas.Left="40"
+                               Canvas.ZIndex="4" Visibility="Hidden"
+                               Canvas.Top="190" />     
+                        
+                        <!-- Top/Bottom Green Lines -->
+                        <Image Source="Images\zn-greenlines-top.png" Name="imgGlTop" Visibility="Hidden"
+                               Canvas.ZIndex="10" Height="301" Width="857" Canvas.Left="-30" 
+                               Canvas.Top="-112" RenderTransformOrigin="0.498,0.287" Stretch="Fill" />
+
+                        <Image Source="Images\zn-greenlines-bottom.png" Name="imgGlBottom" Visibility="Hidden"
+                               Canvas.ZIndex="10" Height="301" Width="857" Canvas.Left="-30" 
+                               Canvas.Top="416" RenderTransformOrigin="0.498,0.287" Stretch="Fill" />
+
+                        <!-- Far Top/Bottom Green Lines -->
+                        <Image Source="Images\zn-greenlines-top.png" Name="imgGlFarTop" Visibility="Hidden"
+                               Canvas.ZIndex="10" Height="424" Width="1357" Canvas.Left="-283" 
+                               Canvas.Top="-245" RenderTransformOrigin="0.498,0.287" Stretch="Fill" />
+
+                        <Image Source="Images\zn-greenlines-bottom.png" Name="imgGlFarBottom" Visibility="Hidden"
+                               Canvas.ZIndex="10" Height="424" Width="1357" Canvas.Left="-283" 
+                               Canvas.Top="430" RenderTransformOrigin="0.498,0.287" Stretch="Fill" />
+                        
+                        <!-- Arrows -->
+                        <Image Source="Images\arrow-top-left.png" Name="imgArrowTopLeft" Visibility="Hidden"
+                               Canvas.ZIndex="10" Height="103" Width="111" Canvas.Left="95" Stretch="Uniform"
+                               Canvas.Top="95"
+                               RenderTransformOrigin="0.5, 0.5">
+                            <Image.RenderTransform>
+                                <ScaleTransform x:Name="sclArrowTopLeft" ScaleX="1" ScaleY="1"/>
+                            </Image.RenderTransform>
+                        </Image>
+                        <Image Source="Images\arrow-bottom-left.png" Name="imgArrowBottomLeft" Visibility="Hidden"
+                               Canvas.ZIndex="10" Height="105" Width="113" Canvas.Left="93" Stretch="Uniform"
+                               Canvas.Top="402"
+                               RenderTransformOrigin="0.5, 0.5">
+                            <Image.RenderTransform>
+                                <ScaleTransform x:Name="sclArrowBottomLeft" ScaleX="1" ScaleY="1" />
+                            </Image.RenderTransform>
+                        </Image>
+                        <Image Source="Images\arrow-top-right.png" Name="imgArrowTopRight" Visibility="Hidden"
+                               Canvas.ZIndex="10" Height="102" Width="121" Canvas.Left="588" Stretch="Uniform"
+                               Canvas.Top="92" 
+                               RenderTransformOrigin="0.5, 0.5">
+                            <Image.RenderTransform>
+                                <ScaleTransform x:Name="sclArrowTopRight" ScaleX="1" ScaleY="1" />
+                            </Image.RenderTransform>
+                        </Image>
+                        <Image Source="Images\arrow-bottom-right.png" Name="imgArrowBottomRight" Visibility="Hidden"
+                               Canvas.ZIndex="10" Height="104" Width="113" Canvas.Left="594" Stretch="Uniform"
+                               Canvas.Top="405"
+                               RenderTransformOrigin="0.5, 0.5">
+                            <Image.RenderTransform>
+                                <ScaleTransform x:Name="sclArrowBottomRight" ScaleX="1" ScaleY="1" />
+                            </Image.RenderTransform>
+                        </Image>                       
+                    </Canvas>
+                </Border>
+                
+                <!-- Stripes -->
+                <!--<Rectangle Height="30" Width="800" HorizontalAlignment="Stretch" Fill="Pink" />-->
+                
+                
+                
+            </Canvas>
+        </Border>
+
+    </Grid>
+</Window>

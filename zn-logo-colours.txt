@@ -1,0 +1,18 @@
+yellow
+green
+red
+orange
+green
+red
+cyan
+
+---------- arrows ------------------
+
+violet
+blue
+green
+violet
+yellow
+blue 
+green
+
